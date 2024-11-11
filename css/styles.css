@@ -277,6 +277,10 @@ footer a {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
+	#reviews-container {
+		grid-template-columns: 1fr 1fr;
+	}
+
 	#form-container {
 		flex-direction: column;
 	}
@@ -294,6 +298,10 @@ footer a {
 
 @media all and (max-width: 600px) {
 	#products-menu {
+		grid-template-columns: 1fr;
+	}
+
+	#reviews-container {
 		grid-template-columns: 1fr;
 	}
 

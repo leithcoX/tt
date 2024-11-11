@@ -255,13 +255,14 @@ iframe {
 footer {
 	background: #636363;
 	color: white;
-	padding: 10px 20px !important;
-	display: flex !important;
-	flex-direction: column !important;
-	justify-content: space-around !important;
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 footer a {
+	margin-left: auto;
+	margin-right: auto;
 	text-decoration: none;
 	color: white;
 }
@@ -316,5 +317,4 @@ footer a {
 	}
 }
 
-@media all and (max-width: 100px) {
-}
+@media all and (max-width: 100px) {}

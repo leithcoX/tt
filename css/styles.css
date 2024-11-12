@@ -44,12 +44,12 @@ li {
 
 #menu-tools {
 	width: 100%;
-	margin-left: 1em;
+	margin: 0 1em;
 }
 
 #menu-bar-container {
 	display: flex;
-	margin-right: 2em;
+	/* margin-right: 2em; */
 }
 
 #search-bar {
@@ -77,12 +77,26 @@ li {
 
 #cart-logo {
 	/* box-sizing: content-box; */
-	padding: 15px;
+	/* padding: 15px; */
 	height: 60px;
 }
 
+#cart-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 10px;
+}
+
+#cart-icon {
+	color: black;
+	font-size: 30px;
+}
+
 ul {
-	padding: 5px !important;
+	padding: 0px;
+	margin-left: 4px;
+	margin-bottom: 0px;
 }
 
 .menu-item {
@@ -181,14 +195,18 @@ hr {
 
 #reviews-section {
 	background: rgb(131, 58, 180);
-	background: linear-gradient(to bottom,
+	background: linear-gradient(
+			to bottom,
 			rgba(235, 235, 235, 1),
 			35%,
-			transparent),
-		linear-gradient(104deg,
+			transparent
+		),
+		linear-gradient(
+			104deg,
 			rgba(131, 58, 180, 1) 0%,
 			rgba(253, 29, 29, 1) 50%,
-			rgba(252, 176, 69, 1) 100%);
+			rgba(252, 176, 69, 1) 100%
+		);
 	padding: 3rem;
 }
 
@@ -216,10 +234,12 @@ hr {
 	min-width: 20em;
 	padding: .5em;
 	box-shadow:
-		rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0,
+		rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(
 			0,
 			0,
-			0.2) 0px -3px 0px inset;
+			0,
+			0.2
+		) 0px -3px 0px inset;
 }
 
 .score {
@@ -361,11 +381,42 @@ footer a {
 	#reviews-container {
 		grid-template-columns: 1fr 1fr;
 	}
+
+	#location-header {
+		font-size: 12px;
+		padding: 3px;
+		min-height: 1px;
+	}
+
+	#menu-logo {
+		height: 65px;
+		width: 65px;
+		margin: 3px;
+	}
 }
 
 @media all and (max-width: 750px) {
 	#reviews-container {
 		grid-template-columns: 1fr;
+	}
+
+	#search-bar {
+		margin: 2px;
+		padding: 3px 5px;
+	}
+
+	#search-button {
+		margin-top: 2px;
+	}
+
+	#cart-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#cart-logo {
+		height: 20px;
 	}
 }
 
@@ -385,4 +436,5 @@ footer a {
 	}
 }
 
-@media all and (max-width: 100px) {}
+@media all and (max-width: 100px) {
+}

@@ -126,6 +126,12 @@ li.menu-item a:hover:after {
 	margin-bottom: 3em;
 }
 
+hr {
+	width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /* PRODUCTOS */
 
 #products-section h2 {

@@ -1,10 +1,8 @@
 
 function areFieldsComplete() {
-    for (const input_field of document.getElementById("contact-form")) {
-        // console.log(input_field)
+    for (const input_field of document.getElementById("contact-form"))
         if (!input_field.value.trim())
             return false
-    }
     return true
 }
 
@@ -12,9 +10,9 @@ function validateFormFields() {
     console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
-const productExample = {
-  "name" : "Nombre de producto",
-  "img" : {"src" : "./img/prods/resmatempo.jpg"},
+function addProductToCart(product) {
+  console.log("Added",product)
+  sessionStorage.setItem(product.id,JSON.stringify(product))
 }
 
 
@@ -42,6 +40,9 @@ function createItem(product) {
   cart_button.className = "consultar-button"
   cart_button.href = "#"
   cart_button.innerHTML = "Agregar al carrito"
+  cart_button.addEventListener("click",function (event) {
+    addProductToCart(product)
+  })
 
   card_body.appendChild(item_title)
   card_body.appendChild(price)
@@ -95,6 +96,7 @@ async function getShopItems(n) {
     for (let product of data) {
       productsList.push(
         {
+          "id": product.id,
           "name": product.title,
           "img": {"src": product.image},
           "price": product.price,

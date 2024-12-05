@@ -12,4 +12,8 @@ function validateFormFields() {
     console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
-validateFormFields()
+function main() {
+  validateFormFields()
+}
+
+main()

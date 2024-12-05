@@ -51,6 +51,37 @@ function generateShopItems(items) {
   for (let i=0; i <4; i++){
     menu.appendChild(createItem(productExample))
   }
+}
+
+function createReview() {
+  review = document.createElement("div")
+  review.className = "review"
+
+  score = document.createElement("div")
+  score.className = "score"
+
+  rate = Math.floor(Math.random() * 3) + 2
+  for (let i=0; i<5; i++) {
+    star = document.createElement("i")
+    empty = i > rate ? "_o" : ""
+    star.className = "nf nf-fa-star" + empty
+    score.appendChild(star)
+  }
+
+  reviewer_name = document.createElement("div")
+  reviewer_name.className = "review-name"
+  reviewer_name.innerHTML = "Nombre"
+
+  text = document.createElement("p")
+  text.classreviewer_name = "review-text"
+  text.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at metus eleifend, rhoncus dolor nec"
+
+  review.appendChild(score)
+  review.appendChild(reviewer_name)
+  review.appendChild(text)
+
+  return review
+}
 
 }
 

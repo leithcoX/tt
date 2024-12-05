@@ -25,10 +25,12 @@ function updateProductInCart(product) {
 }
 
 
+
 function createItem(product) {
 
   container = document.createElement("div")
   container.className = "card"
+  // container.id = `prodid${product.id}`
 
   image = document.createElement("img")
   image.src = product.img.src

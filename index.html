@@ -245,25 +245,27 @@
                     </legend>
 
                     <label> Nombre <br>
-                        <input type="text" placeholder="Nombre" name="name" required>
+                        <input type="text" placeholder="Nombre" onchange="validateFormFields()" name="name" required>
                     </label>
 
                     <label>E-mail <br>
-                        <input type="mail" placeholder="ejemplo@mail.com" name="mail" required
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input type="mail" placeholder="ejemplo@mail.com" onchange="validateFormFields()" name="mail"
+                            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </label>
 
                     <label>Mensaje <br>
-                        <textarea rows="10" placeholder="Dejá tu consula acá..." name="mensaje" required></textarea>
+                        <textarea rows="10" placeholder="Dejá tu consula acá..." onchange="validateFormFields()"
+                            name="mensaje" required></textarea>
                     </label>
 
-                    <button class="btn btn-dark" type="submit">Enviar</button>
+                    <button class="btn btn-dark" type="submit" value="Enviar">Enviar</button>
                 </form>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1641.1068804649767!2d-58.4188312511433!3d-34.64929727016325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb3aadcb5eb9%3A0x5e6fe3531a1dcac4!2sEstaci%C3%B3n%20Dr.%20A.%20S%C3%A1enz%20Viaducto!5e0!3m2!1ses!2sar!4v1731288893685!5m2!1ses!2sar"
                     height="auto" width="auto" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+                <!-- <button onclick="validateFormFields()">Click</button> -->
             </div>
         </section>
     </main>
@@ -285,5 +287,7 @@
         </a>
     </div>
 </body>
+
+<script src="script.js"></script>
 
 </html>

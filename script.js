@@ -33,12 +33,18 @@ function createItem(product) {
   item_title.className = "gantari-font"
   item_title.innerHTML = product.name
 
+  price = document.createElement("h5")
+  // price.className = "gantari-font"
+  price.innerHTML = product.price
+  price.innerHTML = Math.floor(Math.random() * 5000) + 5000
+
   cart_button = document.createElement("a")
   cart_button.className = "consultar-button"
   cart_button.href = "#"
   cart_button.innerHTML = "Agregar al carrito"
 
   card_body.appendChild(item_title)
+  card_body.appendChild(price)
   card_body.appendChild(cart_button)
   container.appendChild(image)
   container.appendChild(card_body)
@@ -46,27 +52,30 @@ function createItem(product) {
   return container
 }
 
-function generateShopItems(ammountItems) {
+function getShopItems() {
+  return [
+      {
+        "name" : "Chambril 150 hojas blancas A4 180g",
+        "img" : {"src" : "./img/prods/pila_chambril.jpg"},
+        "price" : 1000,
+      },
+      {
+        "name" : "Resma boreal A4 80g",
+        "img" : {"src" : "./img/prods/resmaboreal.jpg"},
+        "price" : 2000,
+      },
+      {
+        "name" : "Resma tempo carta 75g",
+        "img" : {"src" : "./img/prods/resmatempo.jpg"},
+        "price" : 4000,
+      },
+    ]
+}
 
-  const productsList = [
-    {
-      "name" : "Chambril 150 hojas blancas A4 180g",
-      "img" : {"src" : "./img/prods/pila_chambril.jpg"},
-    },
-    {
-      "name" : "Resma boreal A4 80g",
-      "img" : {"src" : "./img/prods/resmaboreal.jpg"},
-    },
-    {
-      "name" : "Resma tempo carta 75g",
-      "img" : {"src" : "./img/prods/resmatempo.jpg"},
-    },
-  ]
+function generateShopItems(productsList) {
   const menu = document.getElementById("products-menu")
-  for (let i=0; i<ammountItems; i++)
-    menu.appendChild(createItem(productsList[i%3]))
-  
-  
+  for (let product of productsList)
+    menu.appendChild(createItem(product))
 }
 
 function createReview() {
@@ -107,7 +116,8 @@ function generateReviews(ammount) {
 function main() {
   validateFormFields()
   generateReviews(6)
-  generateShopItems(6)
+  productList = getShopItems()
+  generateShopItems(productList)
+  generateShopItems(productList)
 }
-
 main()

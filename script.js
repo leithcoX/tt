@@ -46,11 +46,27 @@ function createItem(product) {
   return container
 }
 
-function generateShopItems(items) {
+function generateShopItems(ammountItems) {
+
+  const productsList = [
+    {
+      "name" : "Chambril 150 hojas blancas A4 180g",
+      "img" : {"src" : "./img/prods/pila_chambril.jpg"},
+    },
+    {
+      "name" : "Resma boreal A4 80g",
+      "img" : {"src" : "./img/prods/resmaboreal.jpg"},
+    },
+    {
+      "name" : "Resma tempo carta 75g",
+      "img" : {"src" : "./img/prods/resmatempo.jpg"},
+    },
+  ]
   const menu = document.getElementById("products-menu")
-  for (let i=0; i <4; i++){
-    menu.appendChild(createItem(productExample))
-  }
+  for (let i=0; i<ammountItems; i++)
+    menu.appendChild(createItem(productsList[i%3]))
+  
+  
 }
 
 function createReview() {
@@ -91,6 +107,7 @@ function generateReviews(ammount) {
 function main() {
   validateFormFields()
   generateReviews(6)
+  generateShopItems(6)
 }
 
 main()

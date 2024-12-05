@@ -241,45 +241,14 @@ iframe {
 }
 
 @media all and (max-width: 1100px) {
-	#search-bar {
-		margin: 2px;
-		padding: 3px 5px;
-	}
-
-	#search-button {
-		margin-top: 2px;
-	}
-
 	#reviews-container {
 		grid-template-columns: 1fr 1fr;
-	}
-
-	#location-header {
-		font-size: 12px;
-		padding: 3px;
-		min-height: 1px;
-	}
-
-	#menu-logo {
-		height: 65px;
-		width: 65px;
-		margin: 3px;
 	}
 }
 
 @media all and (max-width: 750px) {
 	#reviews-container {
 		grid-template-columns: 1fr;
-	}
-
-	#cart-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	#cart-logo {
-		height: 20px;
 	}
 }
 

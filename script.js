@@ -10,13 +10,18 @@ function validateFormFields() {
     console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
-function addProductToCart(product) {
-  console.log("Added",product)
+function updateProductInCart(product) {
   ids_string = localStorage.getItem("ids")
   ids = ids_string ? JSON.parse(ids_string) : []
-  ids.push(product.id)
-  localStorage.setItem("ids", JSON.stringify(ids))
-  localStorage.setItem(product.id,JSON.stringify(product))
+  console.log(ids)
+  if (ids.some((id) => (id == product.id))) {
+    localStorage.setItem("ids",JSON.stringify(ids.filter((id) => id != product.id)))
+    localStorage.removeItem(product.id)
+  } else {
+    ids.push(product.id)
+    localStorage.setItem("ids", JSON.stringify(ids))
+    localStorage.setItem(product.id,JSON.stringify(product))
+  }
 }
 
 
@@ -45,7 +50,7 @@ function createItem(product) {
   cart_button.href = "#"
   cart_button.innerHTML = "Agregar al carrito"
   cart_button.addEventListener("click",function (event) {
-    addProductToCart(product)
+    updateProductInCart(product)
   })
 
   card_body.appendChild(item_title)

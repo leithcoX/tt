@@ -103,7 +103,7 @@ async function getShopItems(n) {
           "id": product.id,
           "name": product.title,
           "img": {"src": product.image},
-          "price": product.price,
+          "price": product.price*100,
         }
       )
     }

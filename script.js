@@ -43,11 +43,10 @@ function createItem(product) {
   price = document.createElement("h5")
   // price.className = "gantari-font"
   price.innerHTML = product.price
-  price.innerHTML = Math.floor(Math.random() * 5000) + 5000
 
-  cart_button = document.createElement("a")
+  cart_button = document.createElement("button")
   cart_button.className = "consultar-button"
-  cart_button.href = "#"
+  cart_button.type = "button"
   cart_button.innerHTML = "Agregar al carrito"
   cart_button.addEventListener("click",function (event) {
     updateProductInCart(product)

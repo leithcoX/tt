@@ -52,8 +52,23 @@ function createItem(product) {
   return container
 }
 
-function getShopItems() {
+function getStaticShopItems() {
   return [
+      {
+        "name" : "Chambril 150 hojas blancas A4 180g",
+        "img" : {"src" : "./img/prods/pila_chambril.jpg"},
+        "price" : 1000,
+      },
+      {
+        "name" : "Resma boreal A4 80g",
+        "img" : {"src" : "./img/prods/resmaboreal.jpg"},
+        "price" : 2000,
+      },
+      {
+        "name" : "Resma tempo carta 75g",
+        "img" : {"src" : "./img/prods/resmatempo.jpg"},
+        "price" : 4000,
+      },
       {
         "name" : "Chambril 150 hojas blancas A4 180g",
         "img" : {"src" : "./img/prods/pila_chambril.jpg"},
@@ -72,10 +87,32 @@ function getShopItems() {
     ]
 }
 
+async function getShopItems(n) {
+  try {
+    const response = await fetch('https://fakestoreapi.com/products?limit='+n)
+    const data = await response.json()
+    productsList = []
+    for (let product of data) {
+      productsList.push(
+        {
+          "name": product.title,
+          "img": {"src": product.image},
+          "price": product.price,
+        }
+      )
+    }
+    return productsList
+  } catch (error) {
+    console.log("Error:", error)
+    return getStaticShopItems()
+  }
+}
+
 function generateShopItems(productsList) {
   const menu = document.getElementById("products-menu")
-  for (let product of productsList)
+  for (let product of productsList){
     menu.appendChild(createItem(product))
+  }
 }
 
 function createReview() {
@@ -108,16 +145,18 @@ function createReview() {
   return review
 }
 
-function generateReviews(ammount) {
+function generateReviews(n) {
   container = document.getElementById("reviews-container")
-  for (let i=0; i < ammount; i++) container.appendChild(createReview())
+  for (let i=0; i < n; i++) container.appendChild(createReview())
 }
 
-function main() {
+async function main() {
   validateFormFields()
   generateReviews(6)
-  productList = getShopItems()
+  const productList = await getShopItems(10)
   generateShopItems(productList)
-  generateShopItems(productList)
+  // generateShopItems(productList)
+  // generateShopItems
 }
+
 main()

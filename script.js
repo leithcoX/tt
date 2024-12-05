@@ -12,6 +12,10 @@ function validateFormFields() {
 
 function addProductToCart(product) {
   console.log("Added",product)
+  ids_string = localStorage.getItem("ids")
+  ids = ids_string ? JSON.parse(ids_string) : []
+  ids.push(product.id)
+  localStorage.setItem("ids", JSON.stringify(ids))
   localStorage.setItem(product.id,JSON.stringify(product))
 }
 

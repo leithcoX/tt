@@ -83,10 +83,14 @@ function createReview() {
   return review
 }
 
+function generateReviews(ammount) {
+  container = document.getElementById("reviews-container")
+  for (let i=0; i < ammount; i++) container.appendChild(createReview())
 }
 
 function main() {
   validateFormFields()
+  generateReviews(6)
 }
 
 main()

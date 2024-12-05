@@ -13,36 +13,39 @@ function printCart() {
 function createItem(product) {
 
   container = document.createElement("div")
-  container.className = "card"
+  container.className = "row mb-4 d-flex justify-content-between align-items-center"
 
-  image = document.createElement("img")
-  image.src = product.img.src
+  image = document.createElement("div")
+  image.className = "col-md-2 col-lg-2 col-xl-2"
+  image.innerHTML = `<img src="${product.img.src}" class="img-fluid rounded-3 product-img" alt="Cotton T-shirt">`
 
-  card_body = document.createElement("div")
-  card_body.className="card-body"
+  item_title = document.createElement("div")
+  item_title.className = "col-md-3 col-lg-3 col-xl-3"
+  item_title.innerHTML = `<h6 class="text-muted">${product.name}</h6>`
+    // <h6 class="mb-0">${product.name}</h6`
 
-  item_title = document.createElement("h5")
-  item_title.className = "gantari-font"
-  item_title.innerHTML = product.name
+  ammount_button = document.createElement("div")
+  ammount_button.className = "col-md-3 col-lg-3 col-xl-2 d-flex"
+  ammount_button.innerHTML = `
+    <button data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+        <i class="fas fa-minus"></i>
+    </button>
 
-  price = document.createElement("h5")
-  // price.className = "gantari-font"
-  price.innerHTML = product.price
-  price.innerHTML = Math.floor(Math.random() * 5000) + 5000
+    <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm">
 
-  cart_button = document.createElement("a")
-  cart_button.className = "consultar-button"
-  cart_button.href = "#"
-  cart_button.innerHTML = "Agregar al carrito"
-  cart_button.addEventListener("click",function (event) {
-    addProductToCart(product)
-  })
+    <button data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+        <i class="fas fa-plus"></i>
+    </button>`
 
-  card_body.appendChild(item_title)
-  card_body.appendChild(price)
-  card_body.appendChild(cart_button)
+    price = document.createElement("div")
+    price.className = "col-md-3 col-lg-2 col-xl-2 offset-lg-1"
+    price.innerHTML = `<h6 class="mb-0">$ ${product.price}</h6>`
+
+
   container.appendChild(image)
-  container.appendChild(card_body)
+  container.appendChild(item_title)
+  container.appendChild(ammount_button)
+  container.appendChild(price)
 
   return container
 }
@@ -55,11 +58,15 @@ function listItems() {
         return
     }
     for (let id of JSON.parse(ids_string)) {
-
         product = JSON.parse(localStorage.getItem(id))
         // console.log(id,product)
         newElement = createItem(product)
-        document.getElementById("products-container").appendChild(newElement)
+        container = document.getElementById("prods-container")
+        container.insertBefore(newElement,container.lastElementChild)
+        separator = document.createElement("hr")
+    separator.className = "my-4"
+        container.insertBefore(separator,container.lastElementChild)
+        
     }
 }
 

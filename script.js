@@ -12,7 +12,7 @@ function validateFormFields() {
 
 function addProductToCart(product) {
   console.log("Added",product)
-  sessionStorage.setItem(product.id,JSON.stringify(product))
+  localStorage.setItem(product.id,JSON.stringify(product))
 }
 
 

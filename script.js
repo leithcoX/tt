@@ -12,18 +12,15 @@ function validateFormFields() {
 
 function updateProductInCart(product) {
   ids_string = localStorage.getItem("ids")
-  ids = ids_string ? JSON.parse(ids_string) : []
+  ids = ids_string ? JSON.parse(ids_string) : {}
   console.log(ids)
-  if (ids.some((id) => (id == product.id))) {
-    localStorage.setItem("ids",JSON.stringify(ids.filter((id) => id != product.id)))
-    localStorage.removeItem(product.id)
-  } else {
-    ids.push(product.id)
-    localStorage.setItem("ids", JSON.stringify(ids))
+  if (!(product.id in ids)) {
+    ids[product.id] = 0
     localStorage.setItem(product.id,JSON.stringify(product))
   }
+  ids[product.id] += 1
+  localStorage.setItem("ids", JSON.stringify(ids))
 }
-
 
 
 function createItem(product) {

@@ -71,13 +71,18 @@ function updateSummary() {
     total += current_ammount * parseInt(item.querySelector("div .price").innerHTML)
   }
   console.log(counter)
-  document.getElementsByClassName("item-counter")[0].innerHTML = items.length
+  console.log(items.length)
+
+  document.getElementsByClassName("item-counter")[0].innerHTML = ("Items :" + items.length)
   document.getElementsByClassName("item-counter")[1].innerHTML = counter + " ítems"
   document.getElementById("total-price").innerHTML = total
 }
 
+function clearCart() {
+  localStorage.clear()
+}
+
 function main() {
-  // printCart()
   generateItems()
   updateSummary()
 }

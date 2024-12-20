@@ -68,13 +68,6 @@ hr {
 	width: 215px;
 }
 
-.consultar-button {
-	background: darkgreen;
-	text-decoration: none;
-	color: white;
-	padding: 0.4em;
-}
-
 /* Reseñas */
 
 #reviews-section {
@@ -212,7 +205,6 @@ iframe {
 	min-width: 500px;
 	filter: grayscale(100%) invert(97%) contrast(100%);
 }
-
 
 /* MEDIA QUERIES*/
 

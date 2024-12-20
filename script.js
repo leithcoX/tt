@@ -45,7 +45,7 @@ function createItem(product) {
   
 
   cart_button = document.createElement("button")
-  cart_button.className = "consultar-button"
+  cart_button.className = "btn btn-primary"
   cart_button.type = "button"
   cart_button.innerHTML = "Agregar al carrito"
   cart_button.addEventListener("click",function (event) {

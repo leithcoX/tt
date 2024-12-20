@@ -1,3 +1,7 @@
+function formatPrice(price) {
+  return "$" + Number(price).toLocaleString()
+}
+
 function createItem(product) {
   container = document.createElement("div")
   container.id = `prod_id${product.id}`
@@ -27,7 +31,7 @@ function createItem(product) {
 
     price = document.createElement("div")
     price.className = "col-md-3 col-lg-2 col-xl-2 offset-lg-1"
-    price.innerHTML = `<h6 class="mb-0 price">${product.price}</h6>`
+    price.innerHTML = `<h6 class="mb-0 price">${formatPrice(product.price)}</h6>`
 
 
   container.appendChild(image)
@@ -75,7 +79,7 @@ function updateSummary() {
 
   document.getElementsByClassName("item-counter")[0].innerHTML = ("Items :" + items.length)
   document.getElementsByClassName("item-counter")[1].innerHTML = counter + " ítems"
-  document.getElementById("total-price").innerHTML = total
+  document.getElementById("total-price").innerHTML = formatPrice(total)
 }
 
 function clearCart() {

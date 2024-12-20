@@ -40,8 +40,9 @@ function createItem(product) {
   item_title.innerHTML = product.name
 
   price = document.createElement("h5")
-  // price.className = "gantari-font"
-  price.innerHTML = product.price
+  price.className = "price-value"
+  price.innerHTML = "$"+Number(product.price).toLocaleString("sp")
+  
 
   cart_button = document.createElement("button")
   cart_button.className = "consultar-button"

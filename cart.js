@@ -1,3 +1,17 @@
+function updateSummary() {
+  let total_price = 0
+  let total_items = 0
+  ids = JSON.parse(localStorage.getItem("ids"))
+  for (let id in ids) {
+    ammount = parseInt(ids[id])
+    total_items += ammount
+    total_price += JSON.parse(localStorage.getItem(id)).price * ammount
+  }
+  document.getElementById("total-price").textContent = "$" + total_price
+  document.getElementById("total-items-ammount").textContent = "ITEMS " + total_items
+
+}
+
 function updateItem(event, id, must_add) {
   ids = JSON.parse(localStorage.getItem("ids"))
   if (must_add) {
@@ -9,6 +23,7 @@ function updateItem(event, id, must_add) {
   }
   localStorage.setItem("ids", JSON.stringify(ids))
   console.log(event.target.parentNode.querySelector("input").setAttribute("value",ids[id]))
+  updateSummary()
 }
 
 function createHTMLItem(product,ammount) {
@@ -49,30 +64,13 @@ function generateItems() {
   }
 }
 
-function updateSummary() {
-  let counter = 0
-  let total = 0
-  items = document.getElementsByClassName("cart-item")
-  for (let item of items) {
-    current_ammount = parseInt(item.querySelector("div input").value)
-    counter += current_ammount
-    total += current_ammount * parseInt(item.querySelector("div .price").innerHTML)
-  }
-  console.log(counter)
-  console.log(items.length)
-
-  document.getElementsByClassName("item-counter")[0].innerHTML = ("Items :" + items.length)
-  document.getElementsByClassName("item-counter")[1].innerHTML = counter + " ítems"
-  document.getElementById("total-price").innerHTML = formatPrice(total)
-}
-
 function clearCart() {
   localStorage.clear()
 }
 
 function main() {
   generateItems()
-  // updateSummary()
+  updateSummary()
 }
 
 main()

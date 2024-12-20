@@ -26,4 +26,5 @@ Primera aproximación de un ecommerce para la venta de insumos de impresión.
  - [x] Lista desordenada de enlaces para la navegación
 
 ## TODOs
- - Agregar validación a los campos del formulario
+ - [ ] Que al agregar o quitar items del carrito se actualice localStorage
+ - [ ] Que el TOTAL en el carrito se actualice leyendo del localStorage en lugar de la página

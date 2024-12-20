@@ -26,6 +26,13 @@ function updateItem(event, id, must_add) {
   updateSummary()
 }
 
+function removeFromCart(id) {
+  ids = JSON.parse(localStorage.getItem("ids"))
+  delete ids[id]
+  localStorage.setItem("ids", JSON.stringify(ids))
+  location.reload()
+}
+
 function createHTMLItem(product,ammount) {
   item_container = document.createElement("article")
   item_container.innerHTML = `
@@ -42,6 +49,10 @@ function createHTMLItem(product,ammount) {
         ${product.price}
       </span>
     </span>
+
+    <button class="btn btn-danger" onclick="removeFromCart(${product.id})">
+      <i class="nf nf-oct-trash"></i>
+    </button>
   `
   return item_container
 }

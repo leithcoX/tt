@@ -48,6 +48,12 @@ function generateFooter() {
   return containerFooter
 }
 
+function initializeCounterIfNotValid() {
+  let counter = localStorage.getItem("counter")
+  if (counter == null || counter == NaN)  counter = 0
+  localStorage.setItem("counter", counter)
+}
+
 function updateCounter(count) {
   const counter = parseInt(localStorage.getItem("counter")) + count
   localStorage.setItem("counter", counter)
@@ -65,6 +71,7 @@ function updateNav() {
 }
 
 function main() {
+  initializeCounterIfNotValid()
   container = document.getElementById("page")
   container.insertBefore(generateHeader(), container.firstElementChild)
   container.insertBefore(generateFooter(), container.lastElementChild)

@@ -10,12 +10,6 @@ function validateFormFields() {
     console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
-function initializeCounterIfFirstTime() {
-  let counter = localStorage.getItem("counter")
-  if (counter == null)  counter = 0
-  localStorage.setItem("counter", counter)
-}
-
 function updateProductInCart(product) {
   const ids_string = localStorage.getItem("ids")
   let ids = ids_string ? JSON.parse(ids_string) : {}
@@ -167,7 +161,6 @@ function generateReviews(n) {
 }
 
 async function main() {
-  initializeCounterIfFirstTime()
   validateFormFields()
   generateReviews(6)
   const productList = await getShopItems(10)

@@ -68,6 +68,7 @@ function main() {
   container = document.getElementById("page")
   container.insertBefore(generateHeader(), container.firstElementChild)
   container.insertBefore(generateFooter(), container.lastElementChild)
+  updateCounter(0)
 }
 
 main()

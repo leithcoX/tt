@@ -15,11 +15,12 @@ function updateSummary() {
 function updateItem(event, id, must_add) {
   let ids = JSON.parse(localStorage.getItem("ids"))
   if (must_add) {
-    ids[id]++
+      ids[id]++
+      updateCounter(1)
   } else {
-      if (ids[id] === 0)
-        return
+      if (ids[id] === 0) return
       ids[id]--
+      updateCounter(-1)
   }
   localStorage.setItem("ids", JSON.stringify(ids))
   event.target.parentNode.querySelector("input").setAttribute("value",ids[id])
@@ -28,6 +29,7 @@ function updateItem(event, id, must_add) {
 
 function removeFromCart(id) {
   let ids = JSON.parse(localStorage.getItem("ids"))
+  updateCounter(- ids[id])
   delete ids[id]
   localStorage.setItem("ids", JSON.stringify(ids))
   location.reload()
@@ -39,9 +41,9 @@ function createHTMLItem(product,ammount) {
     <img class="item-image" src="${product.img.src}" alt="${product.name}">
     <span class="item-title">${product.name}</span>
     <span class="ammount-container">
-      <button onclick="updateItem(event,${product.id},false);updateCounter(-1)">-</button>
+      <button onclick="updateItem(event,${product.id},false)">-</button>
       <input class="ammount-holder" type="number" value="${ammount}" disabled>
-      <button onclick="updateItem(event,${product.id},true);updateCounter(1)">+</button>
+      <button onclick="updateItem(event,${product.id},true)">+</button>
     </span>
     <span>
       $

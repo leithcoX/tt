@@ -1,9 +1,9 @@
 function updateSummary() {
   let total_price = 0
   let total_items = 0
-  ids = JSON.parse(localStorage.getItem("ids"))
+  const ids = JSON.parse(localStorage.getItem("ids"))
   for (let id in ids) {
-    ammount = parseInt(ids[id])
+    const ammount = parseInt(ids[id])
     total_items += ammount
     total_price += JSON.parse(localStorage.getItem(id)).price * ammount
   }
@@ -13,35 +13,35 @@ function updateSummary() {
 }
 
 function updateItem(event, id, must_add) {
-  ids = JSON.parse(localStorage.getItem("ids"))
+  let ids = JSON.parse(localStorage.getItem("ids"))
   if (must_add) {
-    ids[id] += 1
+    ids[id]++
   } else {
       if (ids[id] === 0)
         return
-      ids[id] -= 1
+      ids[id]--
   }
   localStorage.setItem("ids", JSON.stringify(ids))
-  console.log(event.target.parentNode.querySelector("input").setAttribute("value",ids[id]))
+  event.target.parentNode.querySelector("input").setAttribute("value",ids[id])
   updateSummary()
 }
 
 function removeFromCart(id) {
-  ids = JSON.parse(localStorage.getItem("ids"))
+  let ids = JSON.parse(localStorage.getItem("ids"))
   delete ids[id]
   localStorage.setItem("ids", JSON.stringify(ids))
   location.reload()
 }
 
 function createHTMLItem(product,ammount) {
-  item_container = document.createElement("article")
+  let item_container = document.createElement("article")
   item_container.innerHTML = `
     <img class="item-image" src="${product.img.src}" alt="${product.name}">
     <span class="item-title">${product.name}</span>
     <span class="ammount-container">
-      <button onclick="updateItem(event,${product.id},false)">-</button>
+      <button onclick="updateItem(event,${product.id},false);updateCounter(-1)">-</button>
       <input class="ammount-holder" type="number" value="${ammount}" disabled>
-      <button onclick="updateItem(event,${product.id},true)">+</button>
+      <button onclick="updateItem(event,${product.id},true);updateCounter(1)">+</button>
     </span>
     <span>
       $
@@ -58,17 +58,18 @@ function createHTMLItem(product,ammount) {
 }
 
 function generateItems() {
-  let counter = 0
-  ids_string = localStorage.getItem("ids")
+  const ids_string = localStorage.getItem("ids")
   if (ids_string == null)
       return
 
-  ids = JSON.parse(ids_string)
-  separator = document.createElement("hr")
+  const ids = JSON.parse(ids_string)
+  const separator = document.createElement("hr")
   outer_container = document.getElementById("cart-options")
   outer_container.before(separator)
+
+  let counter = 0
   for (let id in ids) {
-    product = JSON.parse(localStorage.getItem(id))
+    let product = JSON.parse(localStorage.getItem(id))
     outer_container.before(createHTMLItem(product, ids[id]))
     counter++
     outer_container.before(separator.cloneNode())
@@ -77,6 +78,7 @@ function generateItems() {
 
 function clearCart() {
   localStorage.clear()
+  localStorage.setItem("counter", 0)
 }
 
 function main() {

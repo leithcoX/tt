@@ -10,41 +10,47 @@ function validateFormFields() {
     console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
+function initializeCounterIfFirstTime() {
+  let counter = localStorage.getItem("counter")
+  if (counter == null)  counter = 0
+  localStorage.setItem("counter", counter)
+}
+
 function updateProductInCart(product) {
-  ids_string = localStorage.getItem("ids")
-  ids = ids_string ? JSON.parse(ids_string) : {}
-  console.log(ids)
+  const ids_string = localStorage.getItem("ids")
+  let ids = ids_string ? JSON.parse(ids_string) : {}
   if (!(product.id in ids)) {
     ids[product.id] = 0
     localStorage.setItem(product.id,JSON.stringify(product))
   }
   ids[product.id] += 1
   localStorage.setItem("ids", JSON.stringify(ids))
+  updateCounter(1)
 }
 
 
 function createItem(product) {
 
-  container = document.createElement("div")
+  let container = document.createElement("div")
   container.className = "card"
   // container.id = `prodid${product.id}`
 
-  image = document.createElement("img")
+  let image = document.createElement("img")
   image.src = product.img.src
 
-  card_body = document.createElement("div")
+  let card_body = document.createElement("div")
   card_body.className="card-body"
 
-  item_title = document.createElement("h5")
+  let item_title = document.createElement("h5")
   item_title.className = "gantari-font"
   item_title.innerHTML = product.name
 
-  price = document.createElement("h5")
+  let price = document.createElement("h5")
   price.className = "price-value"
   price.innerHTML = "$"+Number(product.price).toLocaleString("sp")
   
 
-  cart_button = document.createElement("button")
+  let cart_button = document.createElement("button")
   cart_button.className = "btn btn-primary"
   cart_button.type = "button"
   cart_button.innerHTML = "Agregar al carrito"
@@ -126,13 +132,13 @@ function generateShopItems(productsList) {
 }
 
 function createReview() {
-  review = document.createElement("div")
+  let review = document.createElement("div")
   review.className = "review"
 
-  score = document.createElement("div")
+  let score = document.createElement("div")
   score.className = "score"
 
-  rate = Math.floor(Math.random() * 3) + 2
+  let rate = Math.floor(Math.random() * 3) + 2
   for (let i=0; i<5; i++) {
     star = document.createElement("i")
     empty = i > rate ? "_o" : ""
@@ -140,11 +146,11 @@ function createReview() {
     score.appendChild(star)
   }
 
-  reviewer_name = document.createElement("div")
+  let reviewer_name = document.createElement("div")
   reviewer_name.className = "review-name"
   reviewer_name.innerHTML = "Nombre"
 
-  text = document.createElement("p")
+  let text = document.createElement("p")
   text.classreviewer_name = "review-text"
   text.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at metus eleifend, rhoncus dolor nec"
 
@@ -161,6 +167,7 @@ function generateReviews(n) {
 }
 
 async function main() {
+  initializeCounterIfFirstTime()
   validateFormFields()
   generateReviews(6)
   const productList = await getShopItems(10)

@@ -108,6 +108,9 @@ article * {
 @media (max-width: 1000px) {
 	#cart-menu {
 		flex-direction: column;
+		border-radius: 0;
+		margin: 0;
+		min-width: 550px;
 	}
 
 	#cart-items-container {
@@ -118,6 +121,7 @@ article * {
 
 	#cart-summary-container {
 		max-width: 100%;
+		padding: 3rem;
 	}
 
 	select {

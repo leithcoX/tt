@@ -13,7 +13,7 @@ function generateHeader() {
                   </button>
 
                   <a id="cart-logo-container" href="cart.html">
-                      <h6 id="cart-counter">${localStorage.getItem("counter")}</h6>
+                      <h6 id="cart-counter" class="invisible">${localStorage.getItem("counter")}</h6>
                       <i id="cart-icon" class="nf nf-md-cart_outline"></i>
                   </a>
 
@@ -51,7 +51,12 @@ function generateFooter() {
 function updateCounter(count) {
   const counter = parseInt(localStorage.getItem("counter")) + count
   localStorage.setItem("counter", counter)
-  document.getElementById("cart-counter").innerText = counter
+  let counterContainer = document.getElementById("cart-counter")
+  counterContainer.innerText = counter
+  if (counter == 0)
+    counterContainer.classList.add("invisible")
+  else
+    counterContainer.classList.remove("invisible")
 }
 
 function updateNav() {

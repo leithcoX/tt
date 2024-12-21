@@ -173,6 +173,10 @@ footer a {
 	color: white;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
 @media all and (max-width: 1100px) {
 	#search-bar {
 		margin: 2px;

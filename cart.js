@@ -38,7 +38,9 @@ function removeFromCart(id) {
 function createHTMLItem(product,ammount) {
   let item_container = document.createElement("article")
   item_container.innerHTML = `
-    <img class="item-image" src="${product.img.src}" alt="${product.name}">
+    <a href="product.html?id=${product.id}">
+      <img class="item-image" src="${product.img.src}" alt="${product.name}">
+    </a>
     <span class="item-title">${product.name}</span>
     <span class="ammount-container">
       <button onclick="updateItem(event,${product.id},false)">-</button>

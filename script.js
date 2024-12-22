@@ -7,7 +7,7 @@ function areFieldsComplete() {
 }
 
 function validateFormFields() {
-    console.log("Los campos del forulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
+    console.log("Los campos del formulario", (areFieldsComplete() ? "Sí" : "NO"), "están completos")
 }
 
 function updateProductInCart(product) {
@@ -107,7 +107,6 @@ async function getShopItems(n) {
     const data = await response.json()
     productsList = []
     for (let product of data) {
-      console.log(product)
       productsList.push(
         {
           "id": product[0],
@@ -172,7 +171,7 @@ function generateReviews(n) {
 function main() {
   validateFormFields()
   generateReviews(6)
-  generateShopItems(8)
+  generateShopItems(5)
 }
 
 main()

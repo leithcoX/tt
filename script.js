@@ -32,7 +32,7 @@ function createItem(product) {
   imageLink.href = "product.html?id=" + product.id
 
   let image = document.createElement("img")
-  image.src = product.img.src
+  image.src = product.image
 
   imageLink.appendChild(image)
 
@@ -69,32 +69,32 @@ function getStaticShopItems() {
   return [
       {
         "name" : "Chambril 150 hojas blancas A4 180g",
-        "img" : {"src" : "./img/prods/pila_chambril.jpg"},
+        "image" : "./img/prods/pila_chambril.jpg",
         "price" : 1000,
       },
       {
         "name" : "Resma boreal A4 80g",
-        "img" : {"src" : "./img/prods/resmaboreal.jpg"},
+        "image" : "./img/prods/resmaboreal.jpg",
         "price" : 2000,
       },
       {
         "name" : "Resma tempo carta 75g",
-        "img" : {"src" : "./img/prods/resmatempo.jpg"},
+        "image" : "./img/prods/resmatempo.jpg",
         "price" : 4000,
       },
       {
         "name" : "Chambril 150 hojas blancas A4 180g",
-        "img" : {"src" : "./img/prods/pila_chambril.jpg"},
+        "image" : "./img/prods/pila_chambril.jpg",
         "price" : 1000,
       },
       {
         "name" : "Resma boreal A4 80g",
-        "img" : {"src" : "./img/prods/resmaboreal.jpg"},
+        "image" : "./img/prods/resmaboreal.jpg",
         "price" : 2000,
       },
       {
         "name" : "Resma tempo carta 75g",
-        "img" : {"src" : "./img/prods/resmatempo.jpg"},
+        "image" : "./img/prods/resmatempo.jpg",
         "price" : 4000,
       },
     ]
@@ -111,7 +111,7 @@ async function getShopItems(n) {
         {
           "id": product[0],
           "name": product[1],
-          "img": {"src": product[2]},
+          "image": product[2],
           "price": product[3],
         }
       )

@@ -39,7 +39,7 @@ function createHTMLItem(product,ammount) {
   let item_container = document.createElement("article")
   item_container.innerHTML = `
     <a href="product.html?id=${product.id}">
-      <img class="item-image" src="${product.img.src}" alt="${product.name}">
+      <img class="item-image" src="${product.image}" alt="${product.name}">
     </a>
     <span class="item-title">${product.name}</span>
     <span class="ammount-container">

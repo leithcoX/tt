@@ -20,14 +20,23 @@ async function getProductInfo(id) {
   }
 }
 
+function addProductToCart(product) {
+  const ids_string = localStorage.getItem("ids")
+  let ids = ids_string ? JSON.parse(ids_string) : {}
+  if (!(product.id in ids)) {
+    ids[product.id] = 0
+    localStorage.setItem(product.id,JSON.stringify(product))
+  }
+  ids[product.id] += 1
+  localStorage.setItem("ids", JSON.stringify(ids))
+  updateCounter(1)
+}
+
 async function updateProductPage() {
   let productId = new URLSearchParams(window.location.search).get('id')
   let product = await getProductInfo(productId)
-  console.log(product)
-  // let productContainer = document.createElement("section")
-  let productContainer = document.getElementById("product-container")
-  productContainer.innerHTML = `
-
+  let container = document.getElementById("product-container")
+  container.innerHTML = `
       <div id="prod_image">
         <img src="${product.image}" alt="">
       </div>
@@ -50,7 +59,10 @@ async function updateProductPage() {
         mauris pharetra scelerisque. Ut venenatis eget massa sit amet suscipit. In fermentum odio dolor, at fermentum ex
         elementum eu.
       </div>
-`
+  `
+    container.querySelector("#buy-buttons .btn-secondary").addEventListener("click",function (event) {
+      addProductToCart(product)
+    })
 }
 
 function main() {

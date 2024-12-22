@@ -44,7 +44,7 @@ async function updateProductPage() {
         <div>
           <h1>${product.name}</h1>
           <h1 class="price"> ${product.price} </h1>
-          <a href="#">Ver en la página original</a>
+          <a href="https://leithcox.pythonanywhere.com/product/${product.id}" >Ver en la página original</a>
         </div>
         <div id="buy-buttons">
           <button class="btn btn-secondary">Agregar al carrito</button>

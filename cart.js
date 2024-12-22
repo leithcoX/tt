@@ -81,6 +81,7 @@ function generateItems() {
 function clearCart() {
   localStorage.clear()
   localStorage.setItem("counter", 0)
+  localStorage.setItem("ids", "{}")
 }
 
 function main() {

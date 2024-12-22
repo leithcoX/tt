@@ -24,7 +24,6 @@ function updateProductInCart(product) {
 
 
 function createItem(product) {
-
   let container = document.createElement("div")
   container.className = "card"
   // container.id = `prodid${product.id}`
@@ -33,14 +32,14 @@ function createItem(product) {
   image.src = product.img.src
 
   let card_body = document.createElement("div")
-  card_body.className="card-body"
+  card_body.className="card-body justify-content-between"
 
   let item_title = document.createElement("h5")
-  item_title.className = "gantari-font"
+  item_title.className = "card-title gantari-font"
   item_title.innerHTML = product.name
 
   let price = document.createElement("h5")
-  price.className = "price-value"
+  price.className = "card-text price-value"
   price.innerHTML = "$"+Number(product.price).toLocaleString("sp")
   
 

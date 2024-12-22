@@ -27,9 +27,9 @@ function generateHeader() {
       </div>
       <nav id="nav-bar">
           <ul id="nav-links" class="hidden">
-              <li class="menu-item"><a href="#">Inicio</a></li>
-              <li class="menu-item"><a href="#products-menu">Productos</a></li>
-              <li class="menu-item"><a href="#form-section">Contacto</a></li>
+              <li class="menu-item"><a href="index.html#">Inicio</a></li>
+              <li class="menu-item"><a href="index.html#products-menu">Productos</a></li>
+              <li class="menu-item"><a href="index.html#form-section">Contacto</a></li>
               <!-- <li class="menu-item"><a href="#">Anillados</a></li> -->
               <!-- <li class="menu-item"><a href="#">Resmas</a></li> -->
           </ul>

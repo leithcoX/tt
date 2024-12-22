@@ -84,8 +84,12 @@ function clearCart() {
 }
 
 function main() {
-  generateItems()
-  updateSummary()
+  if (localStorage.getItem("counter") == 0) {
+      document.getElementById("cart-menu").style.display = "none"
+  } else {
+      generateItems()
+      updateSummary()
+  }
 }
 
 main()

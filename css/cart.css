@@ -13,7 +13,7 @@ body {
 
 #cart-menu {
 	background: #f8f9fa;
-	margin: 2% 10%;
+	margin: 2% 5%;
 	display: flex;
 	justify-content: space-around;
 	border-radius: 30px;
@@ -127,28 +127,14 @@ article * {
 	select {
 		max-width: 22rem;
 	}
-
-	/* #cart-summary-container section { */
-	/* 	display: flex; */
-	/* 	justify-content: space-between; */
-	/* } */
 }
 
-/*
-@media (min-width: 1025px) {
-  .h-custom {
-    height: 100vh !important;
-  }
+#empty-cart-menu {
+	display: flex;
+	margin: 5%;
+	background: white;
+	border-radius: 15px;
+	padding: 3rem 5rem;
+	align-items: center;
+	justify-content: space-between;
 }
-
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
-}
-
-.card-registration .select-arrow {
-  top: 13px;
-}
-*/

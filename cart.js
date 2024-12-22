@@ -84,7 +84,7 @@ function clearCart() {
 }
 
 function main() {
-  if (localStorage.getItem("counter") == 0) {
+  if (localStorage.getItem("ids") == '{}') {
       document.getElementById("cart-menu").style.display = "none"
   } else {
       generateItems()

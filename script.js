@@ -28,8 +28,13 @@ function createItem(product) {
   container.className = "card"
   // container.id = `prodid${product.id}`
 
+  let imageLink = document.createElement("a")
+  imageLink.href = "product.html?id=" + product.id
+
   let image = document.createElement("img")
   image.src = product.img.src
+
+  imageLink.appendChild(image)
 
   let card_body = document.createElement("div")
   card_body.className="card-body justify-content-between"
@@ -44,7 +49,7 @@ function createItem(product) {
   
 
   let cart_button = document.createElement("button")
-  cart_button.className = "btn btn-primary"
+  cart_button.className = "btn btn-outline-primary"
   cart_button.type = "button"
   cart_button.innerHTML = "Agregar al carrito"
   cart_button.addEventListener("click",function (event) {
@@ -54,7 +59,7 @@ function createItem(product) {
   card_body.appendChild(item_title)
   card_body.appendChild(price)
   card_body.appendChild(cart_button)
-  container.appendChild(image)
+  container.appendChild(imageLink)
   container.appendChild(card_body)
 
   return container
@@ -97,16 +102,18 @@ function getStaticShopItems() {
 
 async function getShopItems(n) {
   try {
-    const response = await fetch('https://fakestoreapi.com/products?limit='+n)
+    // const response = await fetch('https://fakestoreapi.com/products?limit='+n)
+    const response = await fetch('https://leithcox.pythonanywhere.com/get_products/'+n)
     const data = await response.json()
     productsList = []
     for (let product of data) {
+      console.log(product)
       productsList.push(
         {
-          "id": product.id,
-          "name": product.title,
-          "img": {"src": product.image},
-          "price": product.price*100,
+          "id": product[0],
+          "name": product[1],
+          "img": {"src": product[2]},
+          "price": product[3],
         }
       )
     }
@@ -117,7 +124,9 @@ async function getShopItems(n) {
   }
 }
 
-function generateShopItems(productsList) {
+async function generateShopItems(n) {
+  const productList = await getShopItems(n)
+
   const menu = document.getElementById("products-menu")
   for (let product of productsList){
     menu.appendChild(createItem(product))
@@ -159,13 +168,11 @@ function generateReviews(n) {
   for (let i=0; i < n; i++) container.appendChild(createReview())
 }
 
-async function main() {
+
+function main() {
   validateFormFields()
   generateReviews(6)
-  const productList = await getShopItems(10)
-  generateShopItems(productList)
-  // generateShopItems(productList)
-  // generateShopItems
+  generateShopItems(8)
 }
 
 main()

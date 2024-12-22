@@ -73,8 +73,8 @@ function updateNav() {
 function main() {
   initializeCounterIfNotValid()
   container = document.getElementById("page")
-  container.insertBefore(generateHeader(), container.firstElementChild)
-  container.insertBefore(generateFooter(), container.lastElementChild)
+  container.insertAdjacentElement("beforebegin",generateHeader())
+  container.insertAdjacentElement("afterend",generateFooter())
   updateCounter(0)
 }
 
